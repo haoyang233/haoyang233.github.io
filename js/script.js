@@ -1,4 +1,4 @@
-var $$ = mdui.$;
+var $$ = mdui.JQ;
 
 /* Gotop */
 $$(function () {
@@ -46,65 +46,17 @@ $$.fn.extend({
 });
 $$(function () {
   $$('#header').longPress(function (e) {
-    if (!window.matchMedia || !window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      if ($$('body').hasClass('mdui-theme-layout-dark')) {
-        $$('body').removeClass('mdui-theme-layout-dark');
-        localStorage.removeItem('mdui-theme-layout-dark');
-      } else {
-        $$('body').addClass('mdui-theme-layout-dark');
-        localStorage.setItem('mdui-theme-layout-dark', true);
-      }
-    }
-  });
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-    if (e.matches) {
-      $$('body').addClass('mdui-theme-layout-dark');
-    } else {
+    if ($$('body').hasClass('mdui-theme-layout-dark')) {
       $$('body').removeClass('mdui-theme-layout-dark');
+      localStorage.removeItem('mdui-theme-layout-dark');
+    } else {
+      $$('body').addClass('mdui-theme-layout-dark');
+      localStorage.setItem('mdui-theme-layout-dark', true);
     }
-    localStorage.removeItem('mdui-theme-layout-dark');
   });
   var tab = new mdui.Tab('#donate .mdui-tab');
   $$('#donate').on('opened.mdui.dialog', function (e) {
     tab.handleUpdate();
-  });
-});
-
-/* Drawer State */
-$$(function () {
-  $$('#sidebar').on('open.mdui.drawer', function (e) {
-    localStorage.removeItem('mdui-drawer-close');
-  });
-  $$('#sidebar').on('close.mdui.drawer', function (e) {
-    localStorage.setItem('mdui-drawer-close', true);
-  });
-});
-
-/* Sidebar Collapse Item State */
-$$(function () {
-  $$('.mdui-collapse-item').eq(0).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-0');
-  });
-  $$('.mdui-collapse-item').eq(0).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-0', true);
-  });
-  $$('.mdui-collapse-item').eq(1).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-1');
-  });
-  $$('.mdui-collapse-item').eq(1).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-1', true);
-  });
-  $$('.mdui-collapse-item').eq(2).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-2');
-  });
-  $$('.mdui-collapse-item').eq(2).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-2', true);
-  });
-  $$('.mdui-collapse-item').eq(3).on('close.mdui.collapse', function (e) {
-    localStorage.removeItem('mdui-collapse-item-3');
-  });
-  $$('.mdui-collapse-item').eq(3).on('open.mdui.collapse', function (e) {
-    localStorage.setItem('mdui-collapse-item-3', true);
   });
 });
 
@@ -114,9 +66,7 @@ var searchFunc = function (path, search_id, content_id) {
     url: path,
     dataType: 'xml',
     success: function (xmlResponse) {
-      var datas = $$(xmlResponse).map(function () {
-        return this.tagName === 'SEARCH' ? this : null;
-      }).find('entry').map(function () {
+      var datas = $$(xmlResponse).find('entry').map(function () {
         return {
           title: $$(this).find('title').text(),
           content: $$(this).find('content').text(),
@@ -181,7 +131,7 @@ var searchFunc = function (path, search_id, content_id) {
               var match_content = content.substr(start, end);
               keywords.forEach(function (keyword) {
                 var regS = new RegExp(keyword, 'gi');
-                match_content = match_content.replace(regS, '<em class="search-result-keyword">$&</em>');
+                match_content = match_content.replace(regS, '<em class="search-result-keyword">' + keyword + '</em>');
               });
               str += '<p class="search-result-content">' + match_content + '...</p>';
             }
