@@ -50,62 +50,6 @@
 
 
 
-    
-        <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        
-            load: ['[tex]/mhchem'],
-        
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        
-            packages: {'[+]': ['mhchem']},
-        
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
           
 
 
@@ -264,108 +208,25 @@
   
   <main id="main-contain" class="mdui-container mdui-m-t-5">
     
-    <article class="mdui-card mdui-m-b-5 mdui-hoverable">    
-      
-      
-        <div class="post-header"> 
-  <a class="post-header-title" href="/2022/12/27/BSG8-1%E5%A4%AA%E5%A5%BD%E7%94%A8%E8%BE%A3%EF%BC%81%EF%BC%81/">BSG8.1太好用辣！！</a>
-  <div class="post-header-meta">
-    <span>
-      <span class="iconfont icon-calendar"></span>
-      发布于:&nbsp;2022-12-27
-    </span>
-    <span>
-      <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2022-12-27
-    </span>
-    <span>
-      <span class="iconfont icon-folder"></span>
-      分类于:&nbsp;<a class="category-link" href="/categories/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E6%9C%BA/">谷歌相机</a>
-    </span>
     
-  </div>
-</div>   
     
 
 
-
-      
-      
-  <div class="post-tags">
-    
-      <i class="iconfont icon-tag">
-        <a rel="tag" href = /tags/%E8%B0%B7%E6%AD%8C%E7%9B%B8%E6%9C%BA/ >谷歌相机</a>
-      </i>
-    
-  </div>
-
-      
-      <div id="achieve-abstract" class="mdui-card-content mdui-p-x-4">
-        <div class="post-abstract mdui-typo ">
-          
-            <p>用来用去还得是BSG8.1顺手，AGC太卡了，LMC，MTSL，SGCAM弃坑了。。志越细节比较难优化，BSG8.1就不同了，它用起来流畅不卡，而且有耐心调整的话能够调出很好的画质，功能一样不少，模式有啥用呢，平时拍我也懒得切换模式（doge）配置就不发了，我自己用（doge x10000000）</p>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-...
-          
+<div class="mdui-card mdui-p-a-4 mdui-m-b-5">
+    <div class="posts-collapse">
+        <div class="collection-title">
+            <h2>谷歌相机<small>标签</small></h2>
         </div>
         
-        <div style="text-align:center;">
-          <a class="post-readmore mdui-btn mdui-ripple mdui-btn-raised" href="/2022/12/27/BSG8-1%E5%A4%AA%E5%A5%BD%E7%94%A8%E8%BE%A3%EF%BC%81%EF%BC%81/">阅读更多</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="mdui-card mdui-m-b-5 mdui-hoverable">    
-      
-      
-        <div class="post-header"> 
-  <a class="post-header-title" href="/2022/12/25/%E4%BB%8B%E7%BB%8D/">介绍</a>
-  <div class="post-header-meta">
-    <span>
-      <span class="iconfont icon-calendar"></span>
-      发布于:&nbsp;2022-12-25
-    </span>
-    <span>
-      <span class="iconfont icon-calendar-check"></span>
-      更新于:&nbsp;2022-12-26
-    </span>
-    <span>
-      <span class="iconfont icon-folder"></span>
-      分类于:&nbsp;<a class="category-link" href="/categories/start/">start</a>
-    </span>
-    
-  </div>
-</div>   
-    
-
-
-
-      
-      
-  <div class="post-tags">
-    
-      <i class="iconfont icon-tag">
-        <a rel="tag" href = /tags/start/ >start</a>
-      </i>
-    
-  </div>
-
-      
-      <div id="achieve-abstract" class="mdui-card-content mdui-p-x-4">
-        <div class="post-abstract mdui-typo ">
-          
-            <p>大家好，我是miiiifans，这就是我的个人博客啦！</p>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-          
-        </div>
+            <div class="collection-item">
+                <h3><a href="/2022/12/27/BSG8-1%E5%A4%AA%E5%A5%BD%E7%94%A8%E8%BE%A3%EF%BC%81%EF%BC%81/">BSG8.1太好用辣！！</a></h3>
+                <time itemprop="dateCreated" datetime=2022-12-27 >
+                    2022.12.27
+                </time>
+            </div>
         
-        <div style="text-align:center;">
-          <a class="post-readmore mdui-btn mdui-ripple mdui-btn-raised" href="/2022/12/25/%E4%BB%8B%E7%BB%8D/">阅读更多</a>
-        </div>
-      </div>
-    </article>
-
+    </div>
+</div>
 
 
   </main>
